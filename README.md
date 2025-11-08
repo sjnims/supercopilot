@@ -73,6 +73,7 @@ The `.github/instructions/` directory contains modular instruction files that gu
 - **`SUPER_COPILOT.instructions.md`** - Main entry point for the SuperCopilot framework
 - **`PRINCIPLES.instructions.md`** - Core software engineering principles
 - **`ENVIRONMENT.instructions.md`** - Development environment documentation
+- **`Git.instructions.md`** - Guidelines for generating git commit messages following Conventional Commits
 - **`MCP_*.instructions.md`** - Comprehensive guides for each MCP server
 
 ### Key Concepts
@@ -272,6 +273,7 @@ supercopilot/
 │       ├── SUPER_COPILOT.instructions.md
 │       ├── PRINCIPLES.instructions.md
 │       ├── ENVIRONMENT.instructions.md
+│       ├── Git.instructions.md
 │       ├── MCP_Context7.instructions.md
 │       ├── MCP_Filesystem-with-morph.instructions.md
 │       ├── MCP_Playwright.instructions.md
@@ -280,6 +282,7 @@ supercopilot/
 │       └── MCP_Tavily.instructions.md
 ├── .vscode/
 │   └── mcp.json              # MCP server configuration
+├── LICENSE                    # MIT License
 └── README.md                 # This file
 ```
 
@@ -405,7 +408,7 @@ Contributions are welcome! Here's how you can help:
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
