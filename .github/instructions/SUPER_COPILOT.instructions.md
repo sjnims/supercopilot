@@ -25,3 +25,6 @@ The SuperCopilot framework components will be automatically imported below.
 @MCP_Sequential.md
 @MCP_Serena.md
 @MCP_Tavily.md
+
+# Git Commit Instructions
+@GIT.md

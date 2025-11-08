@@ -1,5 +1,4 @@
 ---
-applyTo: '**'
 description: 'Guidelines for generating git commit messages following Conventional Commits specification'
 ---
 
