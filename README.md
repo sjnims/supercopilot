@@ -12,6 +12,14 @@ SuperCopilot is a comprehensive framework that extends GitHub Copilot's capabili
 - **Core Principles**: Software engineering best practices built into the AI workflow
 - **Context-Aware**: Understands your codebase, dependencies, and development environment
 
+### Custom Slash Commands
+
+- **11 Specialized Commands**: Pre-built workflows for common development tasks
+- **MCP-Integrated**: Commands intelligently leverage available MCP tools
+- **Context-Aware**: Adapt behavior based on selected files or code
+- **Interactive**: Ask clarifying questions and offer follow-up actions
+- **Categories**: Planning, Research, and Review workflows
+
 ### Powerful MCP Server Integration
 
 - **[Context7](https://context7.com/)**: Access official library documentation and resolve library IDs
@@ -125,6 +133,142 @@ description: 'Core software engineering principles for VSCode Copilot to follow.
 - **Flexible**: Can exclude optional components by not referencing them in the entry point
 
 > **Note**: If you want certain instructions to only apply to specific files, create a separate entry point file with a more restrictive `applyTo` pattern and don't include those instructions in the main `SUPER_COPILOT.instructions.md`.
+
+### Custom Slash Commands
+
+The `.github/prompts/` directory contains 11 specialized slash commands that provide repeatable workflows for common development tasks. These commands are designed to intelligently leverage the MCP tools available in the framework.
+
+#### What are Slash Commands?
+
+Slash commands are custom prompts that you can invoke in GitHub Copilot Chat using the `/` prefix. Each command provides a structured, interactive workflow that:
+
+- **Asks clarifying questions** before execution to understand your needs
+- **Shows progress updates** during analysis and research
+- **Leverages MCP tools intelligently** based on the task context
+- **Adapts to your selection** (file, code block, or project-level)
+- **Provides actionable output** with checklists and next steps
+- **Offers follow-up actions** to continue the workflow
+
+#### Command Naming Convention
+
+All SuperCopilot commands use the `/scp-` prefix to namespace them from built-in Copilot commands:
+- `/scp-feature-plan` - Plan a new feature
+- `/scp-code-review` - Review code quality
+- etc.
+
+#### Available Commands
+
+##### 📋 Planning Commands
+
+**`/scp-feature-plan`**
+- Plan a new feature from concept to implementation
+- Researches best practices and analyzes current architecture
+- Creates comprehensive breakdown with tasks, estimates, and integration requirements
+- Uses: Tavily (research), Context7 (docs), Serena (codebase analysis), Sequential Thinking (evaluation)
+
+**`/scp-task-breakdown`**
+- Break complex tasks into actionable, prioritized steps
+- Maps dependencies and identifies parallel work opportunities
+- Provides estimates and critical path analysis
+- Uses: Serena (code analysis), Sequential Thinking (complexity evaluation), Context7 (patterns)
+
+**`/scp-spike`**
+- Plan and execute technical spikes or proof-of-concepts
+- Evaluates multiple approaches with pros/cons
+- Provides POC implementation plan and remaining unknowns
+- Uses: Sequential Thinking (comparison), Tavily (research), Context7 (API docs), Serena (integration analysis)
+
+##### 🔍 Research Commands
+
+**`/scp-library-research`**
+- Research and evaluate libraries/frameworks for a use case
+- Compares multiple options with detailed decision matrix
+- Provides implementation checklist and integration notes
+- Uses: Tavily (discovery), Context7 (official docs), Serena (integration analysis), Sequential Thinking (comparison)
+
+**`/scp-best-practices`**
+- Discover best practices and patterns for technologies or approaches
+- Categorizes practices by priority (critical, important, helpful)
+- Analyzes current project against best practices
+- Uses: Tavily (current practices), Context7 (official guides), Serena (codebase analysis)
+
+**`/scp-concept-explain`**
+- Comprehensive explanations of programming concepts or patterns
+- Provides layered explanation from simple to advanced
+- Includes practical examples, anti-patterns, and learning path
+- Uses: Tavily (explanations), Context7 (official specs), Serena (codebase examples), Sequential Thinking (structure)
+
+**`/scp-find-examples`**
+- Find real-world code examples and implementations
+- Curates 3-5 best examples with quality assessment
+- Provides adaptation guide for your project
+- Uses: Tavily (search), Context7 (official examples), Serena (existing patterns), Sequential Thinking (evaluation)
+
+##### ✅ Review Commands
+
+**`/scp-code-review`**
+- Comprehensive code quality review with severity levels
+- Checks readability, maintainability, performance, and best practices
+- Provides actionable checklist organized by priority
+- Uses: Serena (structure analysis), Sequential Thinking (systematic review), Context7 (framework patterns)
+
+**`/scp-architecture-review`**
+- Review software architecture and design patterns
+- Assesses scalability, maintainability, and structural quality
+- Provides phased improvement roadmap
+- Uses: Serena (architecture mapping), Sequential Thinking (pattern evaluation), Tavily (modern approaches), Context7 (framework architectures)
+
+**`/scp-security-audit`**
+- Comprehensive security analysis against OWASP Top 10
+- Identifies vulnerabilities with severity scores and attack scenarios
+- Provides remediation roadmap with estimates
+- Uses: Serena (attack surface mapping), Sequential Thinking (OWASP checklist), Tavily (current threats), Context7 (security advisories)
+
+**`/scp-refactor`**
+- Guided code refactoring with preservation of behavior
+- Creates step-by-step refactoring plan with validation points
+- Identifies code smells and suggests appropriate patterns
+- Uses: Serena (dependencies and usages), Sequential Thinking (strategy evaluation), Context7 (patterns), Filesystem-with-morph (can execute changes)
+
+#### How to Use Slash Commands
+
+1. **Copy the prompts to your project**: Copy the `.github/prompts/` directory to your project
+2. **Open Copilot Chat** in VSCode
+3. **Type the command**: e.g., `/scp-code-review`
+4. **Answer clarifying questions** that the command asks
+5. **Review the output** with actionable recommendations
+6. **Take follow-up actions** offered by the command
+
+#### Context-Aware Behavior
+
+Slash commands adapt based on what you have selected:
+
+- **File selected**: Command focuses on that specific file
+- **Code selected**: Command analyzes that code block in detail
+- **Project root**: Command provides project-wide analysis
+- **No selection**: Command asks for the area of focus
+
+#### Example Usage
+
+```
+# Review a specific file
+1. Select a file in VSCode
+2. Open Copilot Chat
+3. Type: /scp-code-review
+4. Answer: "Focus on performance and readability"
+5. Get detailed code review with specific improvements
+
+# Plan a new feature
+1. Position cursor in relevant file (optional)
+2. Type: /scp-feature-plan
+3. Answer questions about the feature requirements
+4. Get comprehensive plan with tasks, estimates, and integration requirements
+
+# Research a library
+1. Type: /scp-library-research
+2. Specify: "state management for React"
+3. Get comparison of Zustand, Jotai, Redux Toolkit with recommendations
+```
 
 ## 🔧 Configuration
 
@@ -269,17 +413,32 @@ Web research and content extraction:
 ```text
 supercopilot/
 ├── .github/
-│   └── instructions/          # Instruction files for Copilot
-│       ├── SUPER_COPILOT.instructions.md
-│       ├── PRINCIPLES.instructions.md
-│       ├── ENVIRONMENT.instructions.md
-│       ├── Git.instructions.md
-│       ├── MCP_Context7.instructions.md
-│       ├── MCP_Filesystem-with-morph.instructions.md
-│       ├── MCP_Playwright.instructions.md
-│       ├── MCP_Sequential.instructions.md
-│       ├── MCP_Serena.instructions.md
-│       └── MCP_Tavily.instructions.md
+│   ├── instructions/          # Instruction files for Copilot
+│   │   ├── SUPER_COPILOT.instructions.md
+│   │   ├── PRINCIPLES.instructions.md
+│   │   ├── ENVIRONMENT.instructions.md
+│   │   ├── Git.instructions.md
+│   │   ├── MCP_Context7.instructions.md
+│   │   ├── MCP_Filesystem-with-morph.instructions.md
+│   │   ├── MCP_Playwright.instructions.md
+│   │   ├── MCP_Sequential.instructions.md
+│   │   ├── MCP_Serena.instructions.md
+│   │   └── MCP_Tavily.instructions.md
+│   └── prompts/               # Custom slash commands for Copilot
+│       ├── planning/          # Feature planning and task workflows
+│       │   ├── scp-feature-plan.prompt.md
+│       │   ├── scp-task-breakdown.prompt.md
+│       │   └── scp-spike.prompt.md
+│       ├── research/          # Research and learning workflows
+│       │   ├── scp-library-research.prompt.md
+│       │   ├── scp-best-practices.prompt.md
+│       │   ├── scp-concept-explain.prompt.md
+│       │   └── scp-find-examples.prompt.md
+│       └── review/            # Code review and quality workflows
+│           ├── scp-code-review.prompt.md
+│           ├── scp-architecture-review.prompt.md
+│           ├── scp-security-audit.prompt.md
+│           └── scp-refactor.prompt.md
 ├── .vscode/
 │   └── mcp.json              # MCP server configuration
 ├── LICENSE                    # MIT License
