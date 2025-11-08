@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/sjnims-supercopilot-badge.png)](https://mseep.ai/app/sjnims-supercopilot)
+
 # SuperCopilot 🚀
 
 > Supercharge GitHub Copilot in VSCode with powerful MCP servers and an intelligent instruction framework
