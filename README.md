@@ -42,7 +42,7 @@ You'll need API keys for some MCP servers:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/supercopilot.git
+git clone https://github.com/sjnims/supercopilot.git
 cd supercopilot
 ```
 
@@ -419,8 +419,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📮 Contact & Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/supercopilot/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/supercopilot/discussions)
+- **Issues**: [GitHub Issues](https://github.com/sjnims/supercopilot/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/sjnims/supercopilot/discussions)
 - **Email**: <sjnims@gmail.com>
 
 ---
