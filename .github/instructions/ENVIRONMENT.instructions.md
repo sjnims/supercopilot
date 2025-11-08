@@ -1,10 +1,11 @@
 ---
-description: 'Environment instructions for AI assistants'
+description: 'Detailed documentation of the development environment for VSCode Copilot to reference when assisting with code generation, debugging, and other tasks.'
 ---
+
 # Machine Environment: M2 Max MacBook Pro (2023)
 
 **Generated**: 2025-11-04
-**Purpose**: Provide AI assistants with comprehensive understanding of this development environment
+**Purpose**: Provide VSCode Copilot with comprehensive understanding of this development environment
 
 ---
 
@@ -13,7 +14,7 @@ description: 'Environment instructions for AI assistants'
 - **Model**: MacBook Pro (Mac14,5)
 - **Processor**: Apple M2 Max
 - **Architecture**: ARM64 (Apple Silicon)
-  - ⚠️ **IMPORTANT**: AI assistants may run under Rosetta 2 (x86_64 emulation) in some contexts
+  - ⚠️ **IMPORTANT**: VSCode Copilot may run under Rosetta 2 (x86_64 emulation) in some contexts
   - Use `arch` command to verify architecture when it matters for builds/compilation
 - **Memory**: 32GB RAM
 - **OS**: macOS 26.0.1 (Build 25A362)
@@ -31,7 +32,7 @@ description: 'Environment instructions for AI assistants'
 - **Custom Config**: ~/.oh-my-zsh/custom/
 
 ### Shell Aliases Reference
-⚠️ **CRITICAL**: Shell aliases defined in .zshrc or Oh My Zsh custom files are **NOT available** in AI assistants' bash execution environment. Always use the actual commands listed below.
+⚠️ **CRITICAL**: Shell aliases defined in .zshrc or Oh My Zsh custom files are **NOT available** in VSCode Copilot' bash execution environment. Always use the actual commands listed below.
 
 | Alias | Actual Command | Purpose |
 |-------|----------------|---------|
@@ -40,7 +41,7 @@ description: 'Environment instructions for AI assistants'
 | `cp` | `cp -i` | Interactive copy (asks confirmation) |
 | `lr` | `ls -hartl` | List files with full details, sorted by time |
 
-**When working with AI assistants**: Use the "Actual Command" column values directly, as aliases won't resolve.
+**When working with VSCode Copilot**: Use the "Actual Command" column values directly, as aliases won't resolve.
 
 ---
 
@@ -300,17 +301,17 @@ uv run script.py
 
 ---
 
-## 📝 Important Notes for AI assistants
+## 📝 Important Notes for VSCode Copilot
 
 ### Architecture Awareness
 - **Current session architecture**: Check with `arch` command
-- **AI assistants may run as**: x86_64 (Rosetta 2) or arm64 (native)
+- **VSCode Copilot may run as**: x86_64 (Rosetta 2) or arm64 (native)
 - **When it matters**: Compilation, builds, architecture-specific binaries
 - **When to check**: Run `arch` before architecture-sensitive operations
 
 ### Shell Behavior
 - **Interactive shell**: Uses ~/.zshrc with Oh My Zsh, aliases work
-- **AI assistants bash**: Non-interactive, aliases DON'T work, use actual commands
+- **VSCode Copilot bash**: Non-interactive, aliases DON'T work, use actual commands
 - **Script execution**: Bash scripts run in bash (not zsh), no Oh My Zsh features
 
 ### Python Environment (CRITICAL)
@@ -357,4 +358,4 @@ grep "^alias" ~/.zshrc ~/.oh-my-zsh/custom/*.zsh
 
 ---
 
-*This file provides context for AI assistants to understand your development environment. It should be updated when your setup changes significantly.*
+*This file provides context for VSCode Copilot to understand your development environment. It should be updated when your setup changes significantly.*

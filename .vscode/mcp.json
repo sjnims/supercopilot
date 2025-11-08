@@ -2,12 +2,6 @@
 	"inputs": [
 		{
 			"type": "promptString",
-			"id": "magic_api_key",
-			"description": "21st.dev Magic API Key",
-			"password": true
-		},
-		{
-			"type": "promptString",
 			"id": "context7_api_key",
 			"description": "Context7 API Key",
 			"password": true
@@ -26,53 +20,31 @@
 		}
 	],
 	"servers": {
-		"@21st-dev/magic": {
-			"type": "stdio",
-			"command": "npx",
-			"args": [
-				"-y",
-				"@21st-dev/magic@latest"
-			],
-			"env": {
-				"API_KEY": "${input:magic_api_key}"
-			}
-		},
-		"chrome-devtools": {
-			"type": "stdio",
-			"command": "npx",
-			"args": [
-				"-y",
-				"chrome-devtools-mcp@latest"
-			]
-		},
 		"context7": {
 			"type": "stdio",
 			"command": "npx",
 			"args": [
 				"-y",
-				"@upstash/context7-mcp"
-			],
-			"env": {
-				"CONTEXT7_API_KEY": "${input:context7_api_key}"
-			}
+				"@upstash/context7-mcp",
+				"--api-key",
+				"${input:context7_api_key}"
+			]
 		},
 		"filesystem-with-morph": {
 			"type": "stdio",
 			"command": "npx",
 			"args": [
-				"-y",
 				"@morph-llm/morph-fast-apply"
 			],
 			"env": {
 				"MORPH_API_KEY": "${input:morph_api_key}",
-				"ALL_TOOLS": "false"
+				"ALL_TOOLS": "true"
 			}
 		},
 		"playwright": {
 			"type": "stdio",
 			"command": "npx",
 			"args": [
-				"-y",
 				"@playwright/mcp@latest"
 			]
 		},
@@ -93,11 +65,7 @@
 				"serena",
 				"start-mcp-server",
 				"--context",
-				"ide-assistant",
-				"--enable-web-dashboard",
-				"false",
-				"--enable-gui-log-window",
-				"false"
+				"ide-assistant"
 			]
 		},
 		"tavily": {
