@@ -1,6 +1,6 @@
 # SuperCopilot 🚀
 
-> Supercharge GitHub Copilot in VSCode with powerful MCP servers and intelligent instruction frameworks
+> Supercharge GitHub Copilot in VSCode with powerful MCP servers and an intelligent instruction framework
 
 SuperCopilot is a comprehensive framework that extends GitHub Copilot's capabilities in Visual Studio Code through Model Context Protocol (MCP) servers and structured instruction files. It provides enhanced AI assistance for software development, code navigation, web automation, research, and more.
 
